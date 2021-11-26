@@ -25,3 +25,6 @@ C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\obj\Debug\net6.0\WebApi.dll
 C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\obj\Debug\net6.0\ref\WebApi.dll
 C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\obj\Debug\net6.0\WebApi.pdb
 C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\obj\Debug\net6.0\WebApi.genruntimeconfig.cache
+C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ASUS\Desktop\Hello\BooksStore\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

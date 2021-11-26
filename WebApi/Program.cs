@@ -1,25 +1,58 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using WebApi.DBOperations;
 
-// Add services to the container.
+// var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// // Add services to the container.
 
-var app = builder.Build();
+// builder.Services.AddControllers();
+// // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// var app = builder.Build();
+
+// // Configure the HTTP request pipeline.
+// if (app.Environment.IsDevelopment())
+// {
+// app.UseSwagger();
+// app.UseSwaggerUI();
+// }
+
+// app.UseHttpsRedirection();
+
+// app.UseAuthorization();
+
+// app.MapControllers();
+
+// app.Run();
+
+namespace WebApi
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    public class Program{
+        
+        public static void Main(string[] args)
+        {
+            //1. Get the IWebHost which will host this application.
+            var host = CreateHostBuilder(args).Build();
 
-app.UseHttpsRedirection();
+            //2. Find the service layer within our scope.
+            using (var scope = host.Services.CreateScope())
+            {
+                //3. Get the instance of BoardGamesDBContext in our services layer
+                var services = scope.ServiceProvider;
+                //4. Call the DataGenerator to create sample data
+                DataGenerator.Initialize(services);
+            }
 
-app.UseAuthorization();
+            //Continue to run the application
+            host.Run();
+        }        
+        
 
-app.MapControllers();
+       public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>();});
+    }
+}     
 
-app.Run();
